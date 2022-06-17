@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace Lab_Olexii
+namespace Курсова
 {
     public partial class InputForm : Form
     {
@@ -67,9 +67,16 @@ namespace Lab_Olexii
 
         private void Confirm(object sender, EventArgs e)
         {
-            var resp = MessageBox.Show("Are you sure you want to delete the directory: \"C:/\"?", "Deleting Windows",
-                MessageBoxButtons.OKCancel);
-            MessageBox.Show(resp == DialogResult.Cancel ? "А просив же не лізти 🙃" : "Ага, і лінукс поставлю..", "Не чіпай поки конфірм");
+            if (Program.InputedArray.Count < 2)
+            {
+                MessageBox.Show("There is nothing to sort! Please, add several elements!", "Not enough elements");
+                return;
+            }
+            this.Hide();
+            new DisplayResultForm().ShowDialog();
+            if (Program.IsClosedByUser) Close();
+            this.Show();
+            Program.IsClosedByUser = true;
         }
 
         private void Clear(object sender, EventArgs e)
@@ -84,7 +91,7 @@ namespace Lab_Olexii
         private void FromFile(object sender, EventArgs e)
         {
             CancelToRemove(sender, e);
-            using OpenFileDialog dialog = new OpenFileDialog();
+            OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "csv files (*.csv)|*.csv";
             dialog.FilterIndex = 2;
             dialog.RestoreDirectory = true;
@@ -123,6 +130,7 @@ namespace Lab_Olexii
                     }
                 }
                 else MessageBox.Show("Incorrect file!");
+                dialog.Dispose();
             }
 
             if (Program.InputedArray.Count > 0)

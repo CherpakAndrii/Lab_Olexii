@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net;
 using System.Text.RegularExpressions;
 
-namespace Lab_Olexii
+namespace Курсова
 {
     public static class FileReader
     {
         public static List<int> GetContent(string filename)
         {
-            string[] content = File.ReadAllText(filename).Split(',', StringSplitOptions.RemoveEmptyEntries);
+            string[] content = File.ReadAllText(filename).Split(',');
             List<int> array = new List<int>();
             foreach (string number in content)
             {

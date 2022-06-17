@@ -1,14 +1,13 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Lab_Olexii
+namespace Курсова
 {
     static class Program
     {
         public static List<int> InputedArray = new List<int>();
+        public static bool IsClosedByUser = true;
 
         /// <summary>
         ///  The main entry point for the application.
