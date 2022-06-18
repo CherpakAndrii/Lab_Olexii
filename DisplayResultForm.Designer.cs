@@ -111,8 +111,7 @@
             this.Controls.Add(this.StartSortingButton);
             this.Controls.Add(this.GoBackButton);
             this.Name = "InputForm";
-            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Text = "Enter an array";
+            this.Text = "Sorting";
             this.ResumeLayout(false);
         }
 
